@@ -1,0 +1,22 @@
+### training ThermoVisSR
+python main.py --save_dir ./train/DRONES/ThermoVisSR \
+               --reset True \
+               --log_file_name train.log \
+               --num_gpu 1 \
+               --num_workers 9 \
+               --dataset DRONES \
+               --dataset_dir DRONES/ \
+               --n_feats 64 \
+               --lr_rate 1e-4 \
+               --lr_rate_dis 1e-4 \
+               --lr_rate_lte 1e-5 \
+               --rec_w 1 \
+               --stv_w 1e-1\
+               --tpl_w 5 \
+               --adv_w 1e-3\
+               --batch_size 2 \
+               --num_init_epochs 0 \
+               --num_epochs 100 \
+               --print_every 600 \
+               --save_every 10 \
+               --val_every 10 \
