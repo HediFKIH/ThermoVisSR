@@ -216,7 +216,6 @@ sh train.sh
 | Configuration | Time | GPU Memory |
 |--------------|------|------------|
 | Single Tesla T4 | ~15 hours | 16 GB |
-| 4× GTX 1080 Ti | ~6 hours | 11 GB each |
 | Single A100 | ~8 hours | 40 GB |
 
 ---
@@ -274,22 +273,6 @@ sh eval.sh
 | DATSR | 29.86 | 0.941 | 0.950 | 0.690 |
 | **ThermoVisSR** | **31.24** | **0.950** | **0.960** | **0.700** |
 
-### Ablation Study Results
-
-| Configuration | PSNR (4×) | SSIM (4×) | PSNR (8×) | SSIM (8×) |
-|--------------|-----------|-----------|-----------|-----------|
-| Baseline | 31.87 | 0.947 | 30.92 | 0.938 |
-| + Fusion Backbone | 32.94 | 0.955 | 31.69 | 0.943 |
-| + SSD | 33.47 | 0.962 | 32.22 | 0.951 |
-| **Full Model** | **34.88** | **0.970** | **33.14** | **0.959** |
-
-### Patch Size Analysis
-
-| Patch Size | PSNR (4×) | SSIM (4×) | PSNR (8×) | SSIM (8×) |
-|-----------|-----------|-----------|-----------|-----------|
-| 12×12 | 33.15 | 0.957 | 29.82 | 0.930 |
-| 6×6 | 33.95 | 0.961 | 30.59 | 0.945 |
-| **3×3** | **34.88** | **0.970** | **31.24** | **0.950** |
 
 ### Performance Under Different Lighting Conditions
 
@@ -406,7 +389,7 @@ For questions, collaborations, or dataset access:
 - **Paper**: [Intelligent Systems with Applications](https://doi.org/10.1016/j.iswa.2024.200429)
 - **Institution**: [ip-label africa](https://ip-label.com/)
 - **Laboratory**: [SM@RTS Lab](https://smarts.tn/)
-=======
+
 # ThermoVisSR
 ThermoVisSR: Multi-Scale Transformer Network for Super-Resolution of Visible and Thermal Air Images
->>>>>>> 6c89fb774ec951557251163904bb5c944ef6f0d9
+
