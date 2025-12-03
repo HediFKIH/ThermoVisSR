@@ -64,28 +64,32 @@ def mkExpDir(args):
 
 
 class MeanShift(nn.Conv2d):
+    """
+    Generic MeanShift supporting N channels.
+    """
+
     def __init__(self, rgb_range, rgb_mean, rgb_std, sign=-1):
-        super(MeanShift, self).__init__(3, 3, kernel_size=1)
+        n_channels = len(rgb_mean)
+        assert (
+            len(rgb_std) == n_channels
+        ), "rgb_mean and rgb_std must have the same length"
+
+        super().__init__(n_channels, n_channels, kernel_size=1)
+
         std = torch.Tensor(rgb_std)
-        self.weight.data = torch.eye(3).view(3, 3, 1, 1)
-        self.weight.data.div_(std.view(3, 1, 1, 1))
+
+        # Identity matrix expanded to convolution weight shape
+        self.weight.data = torch.eye(n_channels).view(n_channels, n_channels, 1, 1)
+        self.weight.data.div_(std.view(n_channels, 1, 1, 1))
+
+        # Bias = ± rgb_range * mean / std
         self.bias.data = sign * rgb_range * torch.Tensor(rgb_mean)
         self.bias.data.div_(std)
-        # self.requires_grad = False
+
+        # Freeze parameters
         self.weight.requires_grad = False
         self.bias.requires_grad = False
 
-class MeanShift4(nn.Conv2d):
-    def __init__(self, rgb_range, rgb_mean, rgb_std, sign=-1):
-        super(MeanShift4, self).__init__(4, 4, kernel_size=1)
-        std = torch.Tensor(rgb_std)
-        self.weight.data = torch.eye(4).view(4, 4, 1, 1)
-        self.weight.data.div_(std.view(4, 1, 1, 1))
-        self.bias.data = sign * rgb_range * torch.Tensor(rgb_mean)
-        self.bias.data.div_(std)
-        # self.requires_grad = False
-        self.weight.requires_grad = False
-        self.bias.requires_grad = False
 def calc_psnr(img1, img2):
     ### args:
         # img1: [h, w, c], range [0, 255]
