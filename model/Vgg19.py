@@ -5,7 +5,7 @@ import timm
 from typing import Optional
 import warnings
 
-from utils import MeanShift, MeanShift4
+from utils import MeanShift
 
 
 class Vgg19(nn.Module):
@@ -112,7 +112,7 @@ class Vgg19thr(nn.Module):
     
     Attributes:
         slice1 (nn.Sequential): Modified VGG19 layers up to relu5_1.
-        sub_mean (MeanShift4): Layer for 4-channel mean subtraction and normalization.
+        sub_mean (MeanShift): Layer for 4-channel mean subtraction and normalization.
     
     Example:
         >>> extractor = Vgg19ThermalFeatureExtractor(requires_grad=False)
@@ -176,7 +176,7 @@ class Vgg19thr(nn.Module):
             0.0924 * rgb_range, 
             0.0991 * rgb_range
         )
-        self.sub_mean = MeanShift4(rgb_range, vgg_mean, vgg_std)
+        self.sub_mean = MeanShift(rgb_range, vgg_mean, vgg_std)
         
         # Move to device if specified
         if device:
