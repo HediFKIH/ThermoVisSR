@@ -159,7 +159,7 @@ pip install -r requirements.txt
 #### Dataset Structure
 
 ```
-dataset/
+DRONES/
 ├── train/
 │   ├── visible/
 │   │   ├── input/          # LR visible images
