@@ -147,7 +147,7 @@ pip install -r requirements.txt
 | **Capture Conditions** | Various altitudes, speeds, lighting |
 | **Training Set** | 736 pairs (3,680 after augmentation) |
 | **Test Set** | 146 pairs |
-| **Image Size** | 256×256 pixels (HR) |
+| **Image Size** | 360×360 pixels (HR) |
 | **Channels** | 3 visible (RGB) + 1 thermal (IR) |
 
 #### EO/IR Imaging System
@@ -161,22 +161,13 @@ pip install -r requirements.txt
 ```
 DRONES/
 ├── train/
-│   ├── visible/
-│   │   ├── input/          # LR visible images
-│   │   └── reference/      # HR visible reference images
-│   └── thermal/
-│       ├── input/          # LR thermal images
-│       └── reference/      # HR thermal reference images
-├── test/
-│   ├── visible/
-│   │   ├── input/
-│   │   └── reference/
-│   └── thermal/
-│       ├── input/
-│       └── reference/
-└── annotations/
-    ├── train_list.txt
-    └── test_list.txt
+│   ├── input_vis/
+│   ├── input_thr/     
+│   ├── ref_vis/       
+│   ├── ref_thr/      
+└── test/
+    ├── input_vis/    
+    ├── input_thr/     
 ```
 
 #### 📋 How to Request Dataset Access
