@@ -194,12 +194,6 @@ To request access to the **Mini/Micro UAVs Co-registered Dataset**, please:
 
 **Note**: The dataset is shared under specific terms and conditions for research purposes only. Commercial use is not permitted.
 
-#### 📜 Dataset Terms of Use
-
-- ✅ Academic and research use only
-- ✅ Citation of the original paper is required
-- ❌ Commercial use is prohibited
-- ❌ Redistribution without permission is not allowed
 
 ---
 
